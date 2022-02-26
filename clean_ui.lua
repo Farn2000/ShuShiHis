@@ -62,9 +62,27 @@ local Mouse = LocalPlayer:GetMouse()
 
 local UI = Instance.new("ScreenGui")
 UI.Name = randomString
-UI.Parent = game:GetService("CoreGui").RobloxGui.Modules
-if syn then
-    syn.protect_gui(UI)
+if getconnections then
+for _,v in pairs(getconnections(game:GetService("CoreGui").DescendantAdded)) do
+v:Disable()
+end
+end
+if identifyexecutor() == "Synapse X" and syn.protect_gui then
+syn.protect_gui(UI)
+UI.Parent = game:GetService("CoreGui")
+elseif gethui then
+   UI.Parent = game:GetService("CoreGui")
+elseif hiddenUI then
+   UI.Parent = hiddenUI()
+elseif get_hidden_gui then
+   UI.Parent = get_hidden_gui()
+elseif not dentifyexecutor() == "Synapse X" and syn.protect_gui or gethui or hiddenUI or get_hidden_gui then
+   UI.Parent = game:GetService("CoreGui")
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = 'Warning!',
+Text = "Your executor does not have a Protect GUI function. Which in that case, you are not safe from GUI Detections.",
+Duration = 6
+})
 end
 
 function library:Destroy()
@@ -383,15 +401,7 @@ function library:CreateWindow(title, bind, discinv)
 
     local UICorner5 = Instance.new("UICorner")
     UICorner5.Parent = TextButton1
-    if syn then
-        getgenv().http_request = syn.request
-    elseif SENTINEL_LOADED then
-        getgenv().http_request = request
-    elseif PROTOSMASHER_LOADED then
-        getgenv().http_request = request
-    elseif KRNL_LOADED then
-        getgenv().http_request = request
-    end
+    getgenv().http_request = request or http_request or identifyexecutor() == "Synapse X" and syn.request or http and http.request
 
     TextButton1.MouseButton1Click:Connect(
         function()
