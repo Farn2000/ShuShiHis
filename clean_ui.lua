@@ -37,7 +37,7 @@ for i = 1, length do
     randomString = randomString .. charTable[math.random(1, #charTable)]
 end
 
-for i, v in pairs(game:GetService("CoreGui").RobloxGui.Modules:GetChildren()) do
+for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
     if v.ClassName == "ScreenGui" then
         for i1, v1 in pairs(v:GetChildren()) do
             if v1.Name == "Main" then
