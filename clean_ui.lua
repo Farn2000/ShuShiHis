@@ -138,6 +138,7 @@ function library:CreateWindow(title, bind, discinv)
     Title.Text = title
     Title.Font = Enum.Font.GothamSemibold
     Title.Parent = Main
+    Title.RichText = true
 
     local UIStroke = Instance.new("UIStroke")
     UIStroke.Color = library.theme.MainClr
