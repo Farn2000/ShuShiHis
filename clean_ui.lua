@@ -141,7 +141,8 @@ function library:CreateWindow(title, bind, discinv)
     local UIStroke1 = Instance.new("UIStroke")
     UIStroke1.Color = library.theme.MainClr
     UIStroke1.Parent = TabScreen
-
+    UIStroke1.Transparency = 0
+    
     local PlrScreen = Instance.new("Frame")
     PlrScreen.Name = "PlrScreen"
     PlrScreen.Size = UDim2.new(0, 184, 0, 85)
