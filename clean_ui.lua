@@ -921,6 +921,7 @@ function library:CreateWindow(title, bind, discinv)
                             {BackgroundTransparency = DropTog and 0 or 1}
                         ):Play()
                     else
+                        DropdownList.Visible = DropTog
                         TweenService:Create(arrow_drop_down, TweenInfo.new(0.8), {Rotation = DropTog and 180 or 0}):Play(
 
                         )
@@ -935,7 +936,7 @@ function library:CreateWindow(title, bind, discinv)
                             {Size = DropTog and UDim2.new(0, 298, 0, 157) or UDim2.new(0, 298, 0, 0)}
                         ):Play()
                         wait(0.3)
-                        DropdownList.Visible = DropTog
+                       
                     end
                 end
             )
