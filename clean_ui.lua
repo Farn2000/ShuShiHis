@@ -41,7 +41,7 @@ for _, gui in pairs(game:GetService("CoreGui").RobloxGui:GetChildren()) do
     if gui:IsA("ScreenGui") then
         for i,v in pairs(gui:GetChildren()) do
             if v.Name == "Main" then
-                gui:Destroy()
+                v.Parent:Destroy()
             end
         end
     end
