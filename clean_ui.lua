@@ -1149,7 +1149,6 @@ function library:CreateWindow(title, bind, discinv)
 
                 TextButton4.MouseButton1Click:Connect(
                     function()
-                        Title3.Text = title .. " : " .. titleas
                         if not table.find(DropTable, v) then
                             table.insert(DropTable, v)
                             callback(DropTable, v)
@@ -1169,7 +1168,6 @@ function library:CreateWindow(title, bind, discinv)
                             if save then
                                 config[title] = unpack(DropTable)
                                 saveConfig()
-                            end
                         end
             end)
         end
