@@ -935,7 +935,6 @@ function library:CreateWindow(title, bind, discinv)
                             TweenInfo.new(0.3),
                             {Size = DropTog and UDim2.new(0, 298, 0, 157) or UDim2.new(0, 298, 0, 0)}
                         ):Play()
-                        wait(0.3)
                        
                     end
                 end
@@ -1000,6 +999,181 @@ function library:CreateWindow(title, bind, discinv)
                     end
                 )
             end
+            for i, v in next, list do
+                DropFunc:Add(v)
+            end
+            function DropFunc:Clear()
+                Title3.Text = title
+                for i, v in pairs(DropList:GetChildren()) do
+                    if v.Name == "TextButton" then
+                        v:Destroy()
+                    end
+                end
+            end
+            return DropFunc
+        end
+        function items:CreateMultiDropdown(title, default, list, save, callback)
+            local Dropdown = Instance.new("Frame")
+            Dropdown.Name = "Dropdown"
+            Dropdown.ZIndex = 2
+            Dropdown.Size = UDim2.new(0, 298, 0, 28)
+            Dropdown.BackgroundTransparency = 1
+            Dropdown.Position = UDim2.new(0, 0, 0, 207)
+            Dropdown.BackgroundColor3 = Color3.fromRGB(37, 44, 52)
+            Dropdown.Parent = Container
+
+            function getpro()
+                if default then
+                    for i, v in next, default do
+                        if table.find(list, v)then
+                            callback(default, v)
+                            return Title .. " " .. table.concat(default, ", ")
+                        end
+                    end
+                    else 
+                    return Title
+                end
+            end
+            local Title3 = Instance.new("TextLabel")
+            Title3.Name = "Title"
+            Title3.ZIndex = 2
+            Title3.Size = UDim2.new(0, 282, 0, 26)
+            Title3.BackgroundTransparency = 1
+            Title3.Position = UDim2.new(0, 6, 0, 0)
+            Title3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Title3.FontSize = Enum.FontSize.Size18
+            Title3.TextSize = 16
+            Title3.TextColor3 = library.theme.TextClr
+            Title3.Text = getpro()
+            Title3.Font = Enum.Font.SourceSansSemibold
+            Title3.TextXAlignment = Enum.TextXAlignment.Left
+            Title3.Parent = Dropdown
+
+            local UICorner17 = Instance.new("UICorner")
+            UICorner17.Parent = Dropdown
+
+            local arrow_drop_down = Instance.new("ImageButton")
+            arrow_drop_down.Name = "arrow_drop_down"
+            arrow_drop_down.LayoutOrder = 15
+            arrow_drop_down.ZIndex = 2
+            arrow_drop_down.Size = UDim2.new(0, 25, 0, 25)
+            arrow_drop_down.BackgroundTransparency = 1
+            arrow_drop_down.Position = UDim2.new(0.9089438, 0, 0.0027472, 0)
+            arrow_drop_down.ImageRectOffset = Vector2.new(324, 524)
+            arrow_drop_down.Image = "rbxassetid://3926307971"
+            arrow_drop_down.ImageRectSize = Vector2.new(36, 36)
+            arrow_drop_down.Parent = Dropdown
+
+            local DropdownList = Instance.new("Frame")
+            DropdownList.Name = "DropdownList"
+            DropdownList.ZIndex = 2
+            DropdownList.Size = UDim2.new(0, 298, 0, 0)
+            DropdownList.Position = UDim2.new(0, 0, 0, 273)
+            DropdownList.BackgroundColor3 = library.theme.ThirdClr
+            DropdownList.Parent = Container
+            DropdownList.Visible = false
+            DropdownList.BackgroundTransparency = 1
+            local UICorner18 = Instance.new("UICorner")
+            UICorner18.Parent = DropdownList
+
+            local DropList = Instance.new("ScrollingFrame")
+            DropList.Name = "DropList"
+            DropList.ZIndex = 2
+            DropList.Size = UDim2.new(0, 298, 0, 157)
+            DropList.BackgroundTransparency = 1
+            DropList.Active = true
+            DropList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            DropList.ScrollBarThickness = 2
+            DropList.Parent = DropdownList
+
+            local UIListLayout2 = Instance.new("UIListLayout")
+            UIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
+            UIListLayout2.Parent = DropList
+
+            local UIPadding1 = Instance.new("UIPadding")
+            UIPadding1.PaddingLeft = UDim.new(0, 5)
+            UIPadding1.Parent = DropList
+            local DropTog = false
+            arrow_drop_down.MouseButton1Click:Connect(
+                function()
+                    DropTog = not DropTog
+                    if DropTog then
+                        DropdownList.Visible = DropTog
+                        TweenService:Create(
+                            DropdownList,
+                            TweenInfo.new(0.5),
+                            {Size = DropTog and UDim2.new(0, 298, 0, 157) or UDim2.new(0, 298, 0, 0)}
+                        ):Play()
+                        TweenService:Create(arrow_drop_down, TweenInfo.new(0.8), {Rotation = DropTog and 180 or 0}):Play(
+
+                        )
+                        TweenService:Create(
+                            DropdownList,
+                            TweenInfo.new(0.5),
+                            {BackgroundTransparency = DropTog and 0 or 1}
+                        ):Play()
+                    else
+                        DropdownList.Visible = DropTog
+                        TweenService:Create(arrow_drop_down, TweenInfo.new(0.8), {Rotation = DropTog and 180 or 0}):Play(
+
+                        )
+                        TweenService:Create(
+                            DropdownList,
+                            TweenInfo.new(0.3),
+                            {BackgroundTransparency = DropTog and 0 or 1}
+                        ):Play()
+                        TweenService:Create(
+                            DropdownList,
+                            TweenInfo.new(0.3),
+                            {Size = DropTog and UDim2.new(0, 298, 0, 157) or UDim2.new(0, 298, 0, 0)}
+                        ):Play()
+                       
+                    end
+                end
+            )
+
+            local DropFunc = {}
+            local DropTable = {}
+            function DropFunc:Add(titleas)
+                local TextButton4 = Instance.new("TextButton")
+                TextButton4.ZIndex = 2
+                TextButton4.Size = UDim2.new(0, 288, 0, 26)
+                TextButton4.BackgroundTransparency = 1
+                TextButton4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                TextButton4.FontSize = Enum.FontSize.Size14
+                TextButton4.TextSize = 14
+                TextButton4.TextColor3 = library.theme.TextClr
+                TextButton4.Text = titleas
+                TextButton4.Font = Enum.Font.SourceSansSemibold
+                TextButton4.Parent = DropList
+
+                TextButton4.MouseButton1Click:Connect(
+                    function()
+                        callback(titleas)
+                        Title3.Text = title .. " : " .. titleas
+                        if not table.find(DropTable, v) then
+                            table.insert(DropTable, v)
+                            callback(DropTable, v)
+                            if save then
+                                config[title] = unpack(DropTable)
+                                saveConfig()
+                            end
+                            Title3.Text = table.concat(DropTable, ", ")
+                        else
+                            for i2, v2 in pairs(DropTable) do
+                                if v2 == v then
+                                    table.remove(DropTable, i2)
+                                    Title3.Text = table.concat(DropTable, ", ")
+                                end
+                            end
+                            callback(DropTable, v)
+                            if save then
+                                config[title] = unpack(DropTable)
+                                saveConfig()
+                            end
+                        end
+
+            end)
             for i, v in next, list do
                 DropFunc:Add(v)
             end
