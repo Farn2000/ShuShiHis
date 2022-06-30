@@ -38,7 +38,16 @@ for i = 1, length do
     randomString = randomString .. charTable[math.random(1, #charTable)]
 end
 
-
+for _, gui in pairs(game:GetService("CoreGui").RobloxGui:GetChildren()) do
+    if gui:IsA("ScreenGui") then
+        for i,v in pairs(gui:GetChildren()) do
+           if v.Name = "Main" then
+            gui:Destroy()        
+                
+                end
+        end
+    end
+end
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
@@ -47,28 +56,7 @@ local Mouse = LocalPlayer:GetMouse()
 
 local UI = Instance.new("ScreenGui")
 UI.Name = randomString
-if getconnections then
-for _,v in pairs(getconnections(game:GetService("CoreGui").DescendantAdded)) do
-v:Disable()
-end
-end
-if identifyexecutor() == "Synapse X" and syn.protect_gui then
-syn.protect_gui(UI)
-UI.Parent = game:GetService("CoreGui")
-elseif gethui then
-   UI.Parent = game:GetService("CoreGui")
-elseif hiddenUI then
-   UI.Parent = hiddenUI()
-elseif get_hidden_gui then
-   UI.Parent = get_hidden_gui()
-elseif not dentifyexecutor() == "Synapse X" and syn.protect_gui or gethui or hiddenUI or get_hidden_gui then
-   UI.Parent = game:GetService("CoreGui")
-game:GetService("StarterGui"):SetCore("SendNotification", {
-Title = 'Warning!',
-Text = "Your executor does not have a Protect GUI function. Which in that case, you are not safe from GUI Detections.",
-Duration = 6
-})
-end
+UI.Parent = game:GetService("CoreGui").RobloxGui
 
 function library:Destroy()
     library:Destroy()
