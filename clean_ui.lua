@@ -139,7 +139,7 @@ function library:CreateWindow(title, bind, discinv)
     UIListLayout.Parent = TabList
 
     local UIStroke1 = Instance.new("UIStroke")
-    UIStroke1.Color = Color3.fromRGB(255, 255, 255)
+    UIStroke1.Color = library.theme.MainClr
     UIStroke1.Parent = TabScreen
 
     local PlrScreen = Instance.new("Frame")
