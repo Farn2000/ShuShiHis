@@ -1027,11 +1027,11 @@ function library:CreateWindow(title, bind, discinv)
                     for i, v in next, default do
                         if table.find(list, v)then
                             callback(default, v)
-                            return Title .. " " .. table.concat(default, ", ")
+                            return title .. " " .. table.concat(default, ", ")
                         end
                     end
                     else 
-                    return Title
+                    return title
                 end
             end
             local Title3 = Instance.new("TextLabel")
@@ -1169,6 +1169,7 @@ function library:CreateWindow(title, bind, discinv)
                                 config[title] = unpack(DropTable)
                                 saveConfig()
                         end
+                    end
             end)
         end
             for i, v in next, list do
