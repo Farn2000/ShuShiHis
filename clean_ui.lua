@@ -1,5 +1,4 @@
-library:Destroy()
-getgenv().library = {}
+local library = {}
 
 library.theme = {
     MainClr = Color3.fromRGB(255, 255, 255),
