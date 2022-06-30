@@ -1,4 +1,4 @@
-getgenv().library:Destroy()
+library:Destroy()
 getgenv().library = {}
 
 library.theme = {
@@ -69,42 +69,7 @@ Text = "Your executor does not have a Protect GUI function. Which in that case, 
 Duration = 6
 })
 end
-if get_hidden_gui then
-for i, v in pairs(get_hidden_gui():GetChildren()) do
-    if v.ClassName == "ScreenGui" then
-        for i1, v1 in pairs(v:GetChildren()) do
-            if v1.Name == "Main" then
-                for i2, v2 in pairs(v1:GetChildren()) do
-                    do
-                        local ui = v
-                        if ui then
-                            ui:Destroy()
-                        end
-                    end
-                end
-            end
-        end
-    end
-        end
-end
-if hiddenUI then
-for i, v in pairs(hiddenUI():GetChildren()) do
-    if v.ClassName == "ScreenGui" then
-        for i1, v1 in pairs(v:GetChildren()) do
-            if v1.Name == "Main" then
-                for i2, v2 in pairs(v1:GetChildren()) do
-                    do
-                        local ui = v
-                        if ui then
-                            ui:Destroy()
-                        end
-                    end
-                end
-            end
-        end
-    end
-        end
-end
+
 function library:Destroy()
     library:Destroy()
 end
