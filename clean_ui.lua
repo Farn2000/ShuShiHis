@@ -142,7 +142,7 @@ function library:CreateWindow(title, bind, discinv)
     UIStroke1.Color = library.theme.MainClr
     UIStroke1.Parent = TabScreen
     UIStroke1.Transparency = 0
-    
+
     local PlrScreen = Instance.new("Frame")
     PlrScreen.Name = "PlrScreen"
     PlrScreen.Size = UDim2.new(0, 184, 0, 85)
@@ -922,7 +922,7 @@ function library:CreateWindow(title, bind, discinv)
                             {BackgroundTransparency = DropTog and 0 or 1}
                         ):Play()
                     else
-                        DropdownList.Visible = DropTog
+                        DropList.Visible = DropTog
                         TweenService:Create(arrow_drop_down, TweenInfo.new(0.8), {Rotation = DropTog and 180 or 0}):Play(
 
                         )
@@ -936,7 +936,9 @@ function library:CreateWindow(title, bind, discinv)
                             TweenInfo.new(0.3),
                             {Size = DropTog and UDim2.new(0, 298, 0, 157) or UDim2.new(0, 298, 0, 0)}
                         ):Play()
-                       
+                       wait(0.3)
+                       DropdownList.Visible = DropTog
+
                     end
                 end
             )
@@ -1114,7 +1116,7 @@ function library:CreateWindow(title, bind, discinv)
                             {BackgroundTransparency = DropTog and 0 or 1}
                         ):Play()
                     else
-                        DropdownList.Visible = DropTog
+                        DropList.Visible = DropTog
                         TweenService:Create(arrow_drop_down, TweenInfo.new(0.8), {Rotation = DropTog and 180 or 0}):Play(
 
                         )
@@ -1128,7 +1130,9 @@ function library:CreateWindow(title, bind, discinv)
                             TweenInfo.new(0.3),
                             {Size = DropTog and UDim2.new(0, 298, 0, 157) or UDim2.new(0, 298, 0, 0)}
                         ):Play()
-                       
+                       wait(.3)
+                       DropdownList.Visible = DropTog
+
                     end
                 end
             )
