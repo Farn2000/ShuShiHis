@@ -1149,7 +1149,6 @@ function library:CreateWindow(title, bind, discinv)
 
                 TextButton4.MouseButton1Click:Connect(
                     function()
-                        callback(titleas)
                         Title3.Text = title .. " : " .. titleas
                         if not table.find(DropTable, v) then
                             table.insert(DropTable, v)
@@ -1172,8 +1171,8 @@ function library:CreateWindow(title, bind, discinv)
                                 saveConfig()
                             end
                         end
-
             end)
+        end
             for i, v in next, list do
                 DropFunc:Add(v)
             end
