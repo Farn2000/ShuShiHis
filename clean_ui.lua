@@ -688,6 +688,7 @@ function library:CreateWindow(title, bind, discinv)
             check_circle.Parent = Toggle
             local ToggleFunc = {}
             function ToggleFunc:Update(state)
+                callback(state)
                 if state then
                     TweenService:Create(
                         check_circle,
